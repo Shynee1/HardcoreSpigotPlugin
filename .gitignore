@@ -1,4 +1,6 @@
-# User-specific stuff
+
+src/main/resources/data.yml
+
 .idea/
 *.iml
 *.ipr
@@ -111,4 +113,3 @@ buildNumber.properties
 # Common working directory
 run/
 
-src/main/resources/data.yml
