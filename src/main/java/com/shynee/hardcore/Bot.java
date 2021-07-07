@@ -25,21 +25,21 @@ public class Bot extends ListenerAdapter implements Listener {
             String[] message = e.getMessage().getContentRaw().split(" ");
             if (e.getAuthor().isBot()) return;
 
-            if (e.getChannel().getId().equalsIgnoreCase(config.getString("discord.channelID"))) {
-                if (message[0].equalsIgnoreCase("!whitelist")) {
-                    if (message.length > 1) {
-
+            if (message[0].equalsIgnoreCase("!whitelist")) {
+                if (message.length > 1) {
+                    if (e.getChannel().getId().equalsIgnoreCase(config.getString("discord.channelID"))) {
                         if (message[1].equalsIgnoreCase("add")) {
                             if (!(message.length < 3)) {
-
                                 list.add(message[2]);
                                 data.getConfig().set("whitelist", list);
                                 data.saveConfig();
                                 e.getMessage().addReaction("\uD83D\uDC4D").queue();
-                            } else {
+                            }
+                        else {
                                 e.getChannel().sendMessage("**Invalid command.** Please use \"!whitelist add [Player name (case sensitive)]\"").queue();
                             }
-                        } else if (message[1].equalsIgnoreCase("remove")) {
+                        }
+                        else if (message[1].equalsIgnoreCase("remove")) {
                             if (e.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                                 if (!(message.length < 3)) {
                                     char[] chars = message[2].toCharArray();
@@ -70,7 +70,8 @@ public class Bot extends ListenerAdapter implements Listener {
                                         e.getChannel().sendMessage("**Invalid command.** Please use \"!whitelist remove [first/last/number]\"").queue();
                                     }
                                 }
-                            } else {
+                            }
+                            else {
                                 e.getChannel().sendMessage("You don't have the **Manage Messages** permission required to run this command.").queue();
                             }
                         }
@@ -79,12 +80,6 @@ public class Bot extends ListenerAdapter implements Listener {
                         }
                     }
                     else {
-                        e.getChannel().sendMessage("**Invalid command**. Please use \"!whitelist help\" for a list of commands.").queue();
-                    }
-                }
-            }
-            if (message[0].equalsIgnoreCase("!whitelist")) {
-                    if (message.length > 1) {
                         if (message[1].equalsIgnoreCase("help")) {
                             EmbedBuilder eb = new EmbedBuilder();
                             eb.setTitle("HardcoreBot Help");
@@ -97,16 +92,14 @@ public class Bot extends ListenerAdapter implements Listener {
                             e.getChannel().sendMessage("There are currently **" + c + " people** in the whitelist").queue();
                         }
                         else {
-                            if (!(e.getChannel().getId().equalsIgnoreCase(config.getString("discord.channelID")))) {
-                                e.getChannel().sendMessage("**Invalid command**. Please use \"!whitelist help\" for a list of commands.").queue();
-                            }
-                        }
-                    } else {
-                        if (!(e.getChannel().getId().equalsIgnoreCase(config.getString("discord.channelID")))) {
-                            e.getChannel().sendMessage("**Invalid command**. Please use \"!whitelist help\" for a list of commands.").queue();
+                            e.getChannel().sendMessage("**You cannot send that command in this channel**").queue();
                         }
                     }
                 }
+                else {
+                    e.getChannel().sendMessage("**Invalid command**. Please use \"!whitelist help\" for a list of commands.").queue();
+                }
+            }
         }
     }
 }
