@@ -39,8 +39,8 @@ public final class Hardcore extends JavaPlugin {
         getCommand("teleport").setExecutor(new TPSpec());
         getCommand("reloadconfig").setExecutor(this);
         if (config.getBoolean("discord.whitelist")) {
-            String token = "ODYyMzQwMTc5NjM2NjUwMDM0.YOW64A.tZaBdofCuAgQHffY7xIpXEL_S4s";
-            JDABuilder bot = JDABuilder.createDefault(token);
+
+            JDABuilder bot = JDABuilder.createDefault(data.getConfig().getString("token"));
             bot.setActivity(Activity.playing("Bot running"));
             Bot botclass = new Bot();
             bot.addEventListeners(botclass);
