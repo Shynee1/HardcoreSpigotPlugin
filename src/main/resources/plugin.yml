@@ -1,0 +1,21 @@
+name: Hardcore
+version: 1.6
+main: com.shynee.hardcore.Hardcore
+api-version: 1.17
+authors: [ Shynee ]
+description: Hardcore is poggers
+commands:
+  teleport:
+    usuage: /<command>
+    description: Allows spectators to teleport
+  /stop:
+    usage: /<command>
+    description: Stops the hardcore plugin
+  /start:
+    usage: /<command>
+    description: Starts the hardcore plugin
+  reloadconfig:
+    usage: /<command>
+    description: Reloads the config files
+
+

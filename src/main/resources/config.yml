@@ -1,0 +1,13 @@
+discord:
+  whitelist: true #Whether or not users can whitelist using their usernames (check plugin page for more info).
+  channelID: 860719165681958932 #The ChannelID of Discord channel used for whitelisting users.
+  prefix: ! #The prefix used for discord commands.
+
+zombies:
+  spawn: true #Wether or not zombies spawn on player death.
+  pickup items: true #Wether or not the zombies can pickup items.
+  strength: 1 #What level of strength the zombies have. Use 0 for no strength.
+
+lightning: true #Whether or not lightning spawns on player death.
+
+teleport: true #Whether or not spectators can teleport using /teleport.
