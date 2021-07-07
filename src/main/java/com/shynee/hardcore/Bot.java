@@ -27,7 +27,19 @@ public class Bot extends ListenerAdapter implements Listener {
 
             if (message[0].equalsIgnoreCase("!whitelist")) {
                 if (message.length > 1) {
-                    if (e.getChannel().getId().equalsIgnoreCase(config.getString("discord.channelID"))) {
+                    if (message[1].equalsIgnoreCase("help")) {
+                        EmbedBuilder eb = new EmbedBuilder();
+                        eb.setTitle("HardcoreBot Help");
+                        eb.setDescription("**Commands:**\n \n`!whitelist add [Player name]` \n Adds the Minecraft Username to the whitelist \n \n`!whitelist remove [first]` \nRemoves the first player in the whitelist \n \n`!whitelist remove [last]` \nRemoves the last player in the whitelist \n \n`!whitelist remove [number]` \nRemoves the player in the number slot specified \n \n`!whitelist count` \nReturns the amount of players currently in the whitelist \n \n`!whitelist help` \nReturns helpful information like commands \n \n**Plugin Page:** \n<link>");
+                        eb.setColor(Color.RED);
+                        e.getChannel().sendMessage(eb.build()).queue();
+                    }
+                    else if (message[1].equalsIgnoreCase("count")) {
+                        int count = list.size();
+                        int c = count - 1;
+                        e.getChannel().sendMessage("There are currently **" + c + " people** in the whitelist").queue();
+                    }
+                    else if (e.getChannel().getId().equalsIgnoreCase(config.getString("discord.channelID"))) {
                         if (message[1].equalsIgnoreCase("add")) {
                             if (!(message.length < 3)) {
                                 list.add(message[2]);
@@ -80,20 +92,7 @@ public class Bot extends ListenerAdapter implements Listener {
                         }
                     }
                     else {
-                        if (message[1].equalsIgnoreCase("help")) {
-                            EmbedBuilder eb = new EmbedBuilder();
-                            eb.setTitle("HardcoreBot Help");
-                            eb.setDescription("**Commands:**\n \n`!whitelist add [Player name]` \n Adds the Minecraft Username to the whitelist \n \n`!whitelist remove [first]` \nRemoves the first player in the whitelist \n \n`!whitelist remove [last]` \nRemoves the last player in the whitelist \n \n`!whitelist remove [number]` \nRemoves the player in the number slot specified \n \n`!whitelist count` \nReturns the amount of players currently in the whitelist \n \n`!whitelist help` \nReturns helpful information like commands \n \n**Plugin Page:** \n<link>");
-                            eb.setColor(Color.RED);
-                            e.getChannel().sendMessage(eb.build()).queue();
-                        } else if (message[1].equalsIgnoreCase("count")) {
-                            int count = list.size();
-                            int c = count - 1;
-                            e.getChannel().sendMessage("There are currently **" + c + " people** in the whitelist").queue();
-                        }
-                        else {
                             e.getChannel().sendMessage("**You cannot send that command in this channel**").queue();
-                        }
                     }
                 }
                 else {
