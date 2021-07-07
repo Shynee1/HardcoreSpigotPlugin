@@ -49,7 +49,7 @@ public class BanCommand implements CommandExecutor, Listener {
                 sm.setOwner(player.getName());
                 skull.setItemMeta(sm);
 
-                ItemStack sword = new ItemStack(Material.IRON_SWORD);
+
                 if (config.getBoolean("lightning")) {
                     player.getWorld().strikeLightningEffect(player.getLocation());
                 }
