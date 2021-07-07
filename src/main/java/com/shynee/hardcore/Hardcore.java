@@ -41,10 +41,10 @@ public final class Hardcore extends JavaPlugin {
         if (config.getBoolean("discord.whitelist")) {
 
             JDABuilder bot = JDABuilder.createDefault(data.getConfig().getString("token"));
-            bot.setActivity(Activity.playing("Bot running"));
+            bot.setActivity(Activity.playing("Minecraft"));
             Bot botclass = new Bot();
             bot.addEventListeners(botclass);
-            JDA jda = null;
+            JDA jda;
             try {
                 jda = bot.build();
                 jda.awaitReady();
