@@ -30,7 +30,7 @@ public class Bot extends ListenerAdapter implements Listener {
                     if (message[1].equalsIgnoreCase("help")) {
                         EmbedBuilder eb = new EmbedBuilder();
                         eb.setTitle("HardcoreBot Help");
-                        eb.setDescription("**Commands:**\n \n`!whitelist add [Player name]` \n Adds the Minecraft Username to the whitelist \n \n`!whitelist remove [first]` \nRemoves the first player in the whitelist \n \n`!whitelist remove [last]` \nRemoves the last player in the whitelist \n \n`!whitelist remove [number]` \nRemoves the player in the number slot specified \n \n`!whitelist count` \nReturns the amount of players currently in the whitelist \n \n`!whitelist help` \nReturns helpful information like commands \n \n**Plugin Page:** \n<link>");
+                        eb.setDescription("**Commands:**\n \n`!whitelist add [Player name]` \n Adds the Minecraft Username to the whitelist \n \n`!whitelist remove [first]` \nRemoves the first player in the whitelist \n \n`!whitelist remove [last]` \nRemoves the last player in the whitelist \n \n`!whitelist remove [number]` \nRemoves the player in the number slot specified \n \n`!whitelist count` \nReturns the amount of players currently in the whitelist \n \n`!whitelist help` \nReturns helpful information like commands \n \n**Plugin Page:** \nhttps://www.spigotmc.org/resources/spigot-ultimate-hardcore-plugin.94050/");
                         eb.setColor(Color.RED);
                         e.getChannel().sendMessage(eb.build()).queue();
                     }
