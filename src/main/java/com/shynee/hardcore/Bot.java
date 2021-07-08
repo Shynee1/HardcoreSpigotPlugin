@@ -59,7 +59,7 @@ public class Bot extends ListenerAdapter implements Listener {
                                         list.remove(list.size() - 1);
                                         config2.set("whitelist", list);
                                         data.saveConfig();
-                                        e.getChannel().sendMessage("Player removed").queue();
+                                        e.getChannel().sendMessage("**Player removed**").queue();
                                     } else if (message[2].equalsIgnoreCase("first")) {
                                         list.remove(1);
                                         config2.set("whitelist", list);
@@ -81,6 +81,9 @@ public class Bot extends ListenerAdapter implements Listener {
                                     else {
                                         e.getChannel().sendMessage("**Invalid command.** Please use \"!whitelist remove [first/last/number]\"").queue();
                                     }
+                                }
+                                else {
+                                    e.getChannel().sendMessage("**Invalid command.** Please use \"!whitelist remove [first/last/number]\"").queue();
                                 }
                             }
                             else {
