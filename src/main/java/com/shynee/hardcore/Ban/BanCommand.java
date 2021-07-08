@@ -69,7 +69,7 @@ public class BanCommand implements CommandExecutor, Listener {
                 if (config.getBoolean("teleport")) {
                         player.sendMessage(net.md_5.bungee.api.ChatColor.YELLOW + "You can also teleport to other players using: /teleport <player name>");
                 }
-                player.teleport(loc);
+                Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getDisplayName() + " has died. May he rest in peace");
                 if (config.getBoolean("discord.whitelist")) {
                     if (config3.getStringList("whitelist").size() > 1) {
                         String s = config3.getStringList("whitelist").get(1);
