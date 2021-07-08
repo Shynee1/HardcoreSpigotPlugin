@@ -25,6 +25,7 @@ public final class Hardcore extends JavaPlugin {
     FileConfiguration config = this.getConfig();
     public DataManager data;
     public DataManager2 data2;
+    JDA jda;
 
     @Override
     public void onEnable() {
@@ -39,12 +40,10 @@ public final class Hardcore extends JavaPlugin {
         getCommand("teleport").setExecutor(new TPSpec());
         getCommand("reloadconfig").setExecutor(this);
         if (config.getBoolean("discord.whitelist")) {
-
             JDABuilder bot = JDABuilder.createDefault(data.getConfig().getString("token"));
             bot.setActivity(Activity.playing("Minecraft"));
             Bot botclass = new Bot();
             bot.addEventListeners(botclass);
-            JDA jda;
             try {
                 jda = bot.build();
                 jda.awaitReady();
@@ -60,7 +59,7 @@ public final class Hardcore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        jda.shutdownNow();
     }
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
