@@ -1,6 +1,6 @@
 discord:
   whitelist: true #Whether or not users can whitelist using their usernames (check plugin page for more info).
-  channelID: placeholder #The ChannelID of Discord channel used for whitelisting users.
+  channelID: <insert channel id> #The ChannelID of Discord channel used for whitelisting users.
 
 zombies:
   spawn: true #Wether or not zombies spawn on player death.

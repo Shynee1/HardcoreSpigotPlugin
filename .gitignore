@@ -2,6 +2,7 @@
 src/main/resources/data.yml
 src/main/java/me/Shynee/Start/Files
 src/main/java/com/shynee/hardcore/Ban/BanAction.java
+pom.xml
 
 .idea/
 *.iml
