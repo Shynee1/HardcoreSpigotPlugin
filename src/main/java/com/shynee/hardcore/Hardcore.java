@@ -39,15 +39,20 @@ public final class Hardcore extends JavaPlugin {
         getCommand("teleport").setExecutor(new TPSpec());
         getCommand("reloadconfig").setExecutor(this);
         if (config.getBoolean("discord.whitelist")) {
-            JDABuilder bot = JDABuilder.createDefault(config.getString("token"));
-            bot.setActivity(Activity.playing("Minecraft"));
-            Bot botclass = new Bot();
-            bot.addEventListeners(botclass);
-            try {
-                jda = bot.build();
-                jda.awaitReady();
-            } catch (LoginException | InterruptedException e) {
-                e.printStackTrace();
+            if (!(config.getString("token").equalsIgnoreCase("placeholder"))) {
+                JDABuilder bot = JDABuilder.createDefault(config.getString("token"));
+                bot.setActivity(Activity.playing("Minecraft"));
+                Bot botclass = new Bot();
+                bot.addEventListeners(botclass);
+                try {
+                    jda = bot.build();
+                    jda.awaitReady();
+                } catch (LoginException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                getServer().getConsoleSender().sendMessage(ChatColor.RED + "[Hardcore]: No token specified, please check the config.yml file for more information.");
             }
         }
         BanCommand b = new BanCommand();

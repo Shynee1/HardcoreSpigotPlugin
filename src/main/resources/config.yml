@@ -1,6 +1,6 @@
 discord:
   whitelist: true #Whether or not users can whitelist using their usernames (check plugin page for more info).
-  token: placeholder #Your Discord bot token used to make the bot. Learn more about it:
+  token: placeholder #Your Discord bot token used to run the bot. Learn more about it here: https://docs.google.com/document/d/1qWs3M-2j3061bmvbBR75kZvd2fF5mQZpHM5AqghOD8Q/edit?usp=sharing
   channelID: placeholder #The ChannelID of Discord channel used for whitelisting users.
 
 zombies:
