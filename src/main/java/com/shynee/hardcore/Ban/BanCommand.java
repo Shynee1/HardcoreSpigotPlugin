@@ -38,7 +38,7 @@ public class BanCommand implements CommandExecutor, Listener {
         List<String> list = data2.getConfig().getStringList("whitelist");
 
         Player player = (Player) e.getEntity();
-        if (data.getConfig().getBoolean("hardcore") == true) {
+        if (data.getConfig().getBoolean("hardcore")) {
             if (e.getEntity() instanceof Player) {
 
                 Location loc = player.getLocation();
@@ -71,7 +71,7 @@ public class BanCommand implements CommandExecutor, Listener {
                 }
                 Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getDisplayName() + " has died. May he rest in peace");
                 if (config.getBoolean("discord.whitelist")) {
-                    if (!(config.getString("token").equalsIgnoreCase("placeholder"))) {
+                    if (!(config.getString("discord.token").equalsIgnoreCase("placeholder"))) {
                         if (config3.getStringList("whitelist").size() > 1) {
                             String s = config3.getStringList("whitelist").get(1);
 

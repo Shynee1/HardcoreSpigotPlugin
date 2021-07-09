@@ -23,8 +23,8 @@ public class Bot extends ListenerAdapter implements Listener {
         List<String> list = data.getConfig().getStringList("whitelist");
 
         if (config.getBoolean("discord.whitelist")) {
-            if (!(config.getString("token").equalsIgnoreCase("placeholder"))) {
-                if (!(config.getString("channelID").equalsIgnoreCase("placeholder"))) {
+            if (!(config.getString("discord.token").equalsIgnoreCase("placeholder"))) {
+                if (!(config.getString("discord.channelID").equalsIgnoreCase("placeholder"))) {
                     String[] message = e.getMessage().getContentRaw().split(" ");
                     if (e.getAuthor().isBot()) return;
 
