@@ -1,6 +1,7 @@
 discord:
   whitelist: true #Whether or not users can whitelist using their usernames (check plugin page for more info).
-  channelID: <insert channel id> #The ChannelID of Discord channel used for whitelisting users.
+  token: placeholder #Your Discord bot token used to make the bot. Learn more about it:
+  channelID: placeholder #The ChannelID of Discord channel used for whitelisting users.
 
 zombies:
   spawn: true #Wether or not zombies spawn on player death.
