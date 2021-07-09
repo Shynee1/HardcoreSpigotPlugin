@@ -52,33 +52,38 @@ public class Bot extends ListenerAdapter implements Listener {
                                     }
                                 } else if (message[1].equalsIgnoreCase("remove")) {
                                     if (e.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
-                                        if (!(message.length < 3)) {
-                                            char[] chars = message[2].toCharArray();
-                                            if (message[2].equalsIgnoreCase("last")) {
-                                                list.remove(list.size() - 1);
-                                                config2.set("whitelist", list);
-                                                data.saveConfig();
-                                                e.getChannel().sendMessage("**Player removed**").queue();
-                                            } else if (message[2].equalsIgnoreCase("first")) {
-                                                list.remove(1);
-                                                config2.set("whitelist", list);
-                                                data.saveConfig();
-                                                e.getChannel().sendMessage("**Player removed**").queue();
-                                            } else if (Character.isDigit(chars[0])) {
-                                                int a = Integer.parseInt(message[2]);
-                                                if (!(list.size() - 1 < a)) {
-                                                    list.remove(a);
+                                        if (list.size() > 1) {
+                                            if (!(message.length < 3)) {
+                                                char[] chars = message[2].toCharArray();
+                                                if (message[2].equalsIgnoreCase("last")) {
+                                                    list.remove(list.size() - 1);
                                                     config2.set("whitelist", list);
                                                     data.saveConfig();
                                                     e.getChannel().sendMessage("**Player removed**").queue();
+                                                } else if (message[2].equalsIgnoreCase("first")) {
+                                                    list.remove(1);
+                                                    config2.set("whitelist", list);
+                                                    data.saveConfig();
+                                                    e.getChannel().sendMessage("**Player removed**").queue();
+                                                } else if (Character.isDigit(chars[0])) {
+                                                    int a = Integer.parseInt(message[2]);
+                                                    if (!(list.size() - 1 < a)) {
+                                                        list.remove(a);
+                                                        config2.set("whitelist", list);
+                                                        data.saveConfig();
+                                                        e.getChannel().sendMessage("**Player removed**").queue();
+                                                    } else {
+                                                        e.getChannel().sendMessage("Not enough players in the whitelist!").queue();
+                                                    }
                                                 } else {
-                                                    e.getChannel().sendMessage("Not enough players in the whitelist!").queue();
+                                                    e.getChannel().sendMessage("**Invalid command.** Please use \"!whitelist remove [first/last/number]\"").queue();
                                                 }
                                             } else {
                                                 e.getChannel().sendMessage("**Invalid command.** Please use \"!whitelist remove [first/last/number]\"").queue();
                                             }
-                                        } else {
-                                            e.getChannel().sendMessage("**Invalid command.** Please use \"!whitelist remove [first/last/number]\"").queue();
+                                        }
+                                        else {
+                                            e.getChannel().sendMessage("**No players in the whitelist**").queue();
                                         }
                                     } else {
                                         e.getChannel().sendMessage("You don't have the **Manage Messages** permission required to run this command.").queue();
