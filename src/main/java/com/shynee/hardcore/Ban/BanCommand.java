@@ -71,19 +71,23 @@ public class BanCommand implements CommandExecutor, Listener {
                 }
                 Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getDisplayName() + " has died. May he rest in peace");
                 if (config.getBoolean("discord.whitelist")) {
-                    if (config3.getStringList("whitelist").size() > 1) {
-                        String s = config3.getStringList("whitelist").get(1);
+                    if (!(config.getString("token").equalsIgnoreCase("placeholder"))) {
+                        if (config3.getStringList("whitelist").size() > 1) {
+                            String s = config3.getStringList("whitelist").get(1);
 
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "whitelist add " + s);
-                        list.remove(1);
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "whitelist add " + s);
+                            list.remove(1);
 
-                        config3.set("whitelist", list);
-                        data2.saveConfig();
+                            config3.set("whitelist", list);
+                            data2.saveConfig();
 
-                        Bukkit.getServer().broadcastMessage(ChatColor.GREEN + s + " has been added to the server!");
+                            Bukkit.getServer().broadcastMessage(ChatColor.GREEN + s + " has been added to the server!");
+                        } else {
+                            Bukkit.getServer().broadcastMessage(ChatColor.RED + "No players in the whitelist queue");
+                        }
                     }
-                    else{
-                        Bukkit.getServer().broadcastMessage(ChatColor.RED + "No players in the whitelist queue");
+                    else {
+                        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "[Hardcore]: No token specified, please check the config.yml file for more information.");
                     }
                   }
                 }
