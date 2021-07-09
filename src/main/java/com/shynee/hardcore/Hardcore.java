@@ -63,7 +63,11 @@ public final class Hardcore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        jda.shutdownNow();
+        if (config.getBoolean("discord.whitelist")) {
+            if (!(config.getString("discord.token").equalsIgnoreCase("placeholder"))) {
+                jda.shutdownNow();
+            }
+        }
     }
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
